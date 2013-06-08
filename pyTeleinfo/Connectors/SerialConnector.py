@@ -77,7 +77,7 @@ class SerialConnector():
         if self.simu:
             self.ret = "-"
         else:
-            self.ret= self.current
+            self.ret= self.currentH
         return self.ret
         
         
