@@ -1,18 +1,15 @@
 $(document).ready(
 
-
-
 function() {
 
-	setTimeout(requestInventory,100);}
+	setTimeout(requestPower,100);}
 );
 
-function requestInventory() {
+function requestPower() {
 
-$.getJSON('//localhost:9090/data', function(donnees) {
-		$('#pow').val(donnees.power);
+$.getJSON('192.168.0.19:9090/data', function(data) {
+		$('#pow').val(data.power);
 });
-
 	
-setTimeout(requestInventory,1000);
+setTimeout(requestPower,1000);
 }
