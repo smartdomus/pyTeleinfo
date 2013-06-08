@@ -23,6 +23,6 @@ class DataHandler(tornado.web.RequestHandler):
         self.write('{"power":"%d",' % self.ser.getPower())
         self.write('"Iinst":"%d",' % self.ser.getIinst())
         self.write('"HP":"%d",' % self.ser.getHP())
-        self.write('"HC":"%d",' % self.ser.getHC())
-        self.write('"plage":"%s"}' % self.ser.getCurrentH())
+        self.write('"HC":"%d"}' % self.ser.getHC())
+        #self.write('"plage":"%s"}' % self.ser.getCurrentH())
         self.finish()
