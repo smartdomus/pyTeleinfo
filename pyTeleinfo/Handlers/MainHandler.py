@@ -8,11 +8,11 @@ from Util.Network import Network
 import tornado.web
 
 
-
 class MainHandler(tornado.web.RequestHandler):
     
 
     def get(self):
+        
         n=Network()
         
         if n.isWAN(self.request.remote_ip):

@@ -30,12 +30,15 @@ $(function () {
                 text: 'Power consumption Flow'
             },
             xAxis: {
+				title: {
+                    text: 'Time (1sec actualisation)'
+                },
                 type: 'datetime',
                 tickPixelInterval: 150
             },
             yAxis: {
                 title: {
-                    text: 'Value'
+                    text: 'Power'
                 },
                 plotLines: [{
                     value: 0,

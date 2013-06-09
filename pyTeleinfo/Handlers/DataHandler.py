@@ -8,11 +8,7 @@ from tornado.web import asynchronous
 import tornado
 
 
-
 class DataHandler(tornado.web.RequestHandler):
-    
-    
-    
     
     @asynchronous
     def get(self):

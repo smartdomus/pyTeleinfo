@@ -4,10 +4,11 @@ Created on 2 juin 2013
 @author: Hoareau
 '''
 
-from Handlers.WsHandler import WsHandler
 from Handlers.DataHandler import DataHandler
 from Handlers.LiveHandler import LiveHandler
 from Handlers.MainHandler import MainHandler
+from Handlers.WsHandler import WsHandler
+from Modules.MenuModule import MenuModule
 from Modules.LiveModule import LiveModule
 import os
 import tornado.httpserver
@@ -26,7 +27,7 @@ class Application(tornado.web.Application):
         settings = dict(
                         template_path=os.path.join(os.path.dirname(__file__), "Templates"),
                         static_path=os.path.join(os.path.dirname(__file__), "Templates/Static"),
-                        ui_modules={'Live': LiveModule,}
+                        ui_modules={'Live': LiveModule,'Menu': MenuModule,}
                         ) 
                             
         handlers = [

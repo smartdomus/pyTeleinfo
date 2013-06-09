@@ -27,4 +27,5 @@ class SenderThread(threading.Thread):
             self._stopevent.wait(1.0)
       
     def stop(self):
+        
         self._stopevent.set()
