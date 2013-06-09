@@ -27,4 +27,4 @@ class LiveModule(tornado.web.UIModule):
         else:
             namespace=n.getPrivateIp()+":"+str(9090)
     
-        return "power="+str(self.ser.getPower())+";var namespace=\"192.168.0.19:9090\";"
+        return "power="+str(self.ser.getPower())+";var namespace=\""+namespace+"\";"

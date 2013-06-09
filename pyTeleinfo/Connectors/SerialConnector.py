@@ -4,7 +4,6 @@ Created on 2 juin 2013
 @author: Hoareau
 '''
 
-import datetime
 import random
 import serial
 
