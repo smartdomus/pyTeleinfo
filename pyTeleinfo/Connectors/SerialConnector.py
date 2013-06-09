@@ -4,6 +4,7 @@ Created on 2 juin 2013
 @author: Hoareau
 '''
 
+import datetime
 import random
 import serial
 
@@ -31,13 +32,25 @@ class SerialConnector():
             #If it fail we are in SimuMode
             self.simu = True;
                 
-                
+    def retrievePower(self):
+        if (self.simu==False):
+            while True:
+                self.line = self.ser.readline().decode('utf-8')
+                if self.line:  # If it isn't a blank line
+                    
+                    if 'PAPP' in self.line:
+                        self.power = int(self.line.split(" ")[1])
+                        self.ser.close()
+                        break        
+                        
                 
                 
     # Retrieve all datas         
-    def getDatas(self):
+    def retrieveAllDatas(self):
         
         if (self.simu==False):
+
+
             while True:
                 
                 self.line = self.ser.readline().decode('utf-8')
@@ -50,9 +63,7 @@ class SerialConnector():
                         
                         if self.nb<2 :
                             self.power = int(self.line.split(" ")[1])
-                            print "papp found"
-                            #self.ser.close()
-                            break        
+    
                         else:
                             self.nb=0
                             self.ser.close()

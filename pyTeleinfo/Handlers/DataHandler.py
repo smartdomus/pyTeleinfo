@@ -12,13 +12,13 @@ import tornado
 class DataHandler(tornado.web.RequestHandler):
     
     
-    ser=SerialConnector()
+    
     
     @asynchronous
     def get(self):
         self.set_header("Access-Control-Allow-Origin", "*")
-
-        self.ser.getDatas()
+        self.ser=SerialConnector()
+        self.ser.retrieveAllDatas()
         self.write('{"Power":"%d",' % self.ser.getPower())
         self.write('"Iinst":"%d",' % self.ser.getIinst())
         self.write('"HP":"%d",' % self.ser.getHP())

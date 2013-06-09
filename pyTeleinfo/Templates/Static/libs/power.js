@@ -1,16 +1,19 @@
 $(document).ready(
 
 function() {
-	setTimeout(requestPower,100);}
+var uri="ws://"+namespace+"/ws"
+var ws = new WebSocket(uri);
+
+ws.onmessage = function (evt) {
+   power=evt.data;
+};
+	
+	
+	
+	
+	}
 );
 
-function requestPower() {
 
-$.getJSON(namespace+'/data', function(data) {
-	power=data.Power;
-	//$('#pow').val(data.power);
 
-});
-	
-setTimeout(requestPower,1000);
-}
+

@@ -4,6 +4,7 @@ Created on 2 juin 2013
 @author: Hoareau
 '''
 
+from Handlers.WsHandler import WsHandler
 from Handlers.DataHandler import DataHandler
 from Handlers.LiveHandler import LiveHandler
 from Handlers.MainHandler import MainHandler
@@ -11,6 +12,8 @@ from Modules.LiveModule import LiveModule
 import os
 import tornado.httpserver
 import tornado.ioloop
+
+
 
 
 
@@ -30,6 +33,7 @@ class Application(tornado.web.Application):
                     (r"/", MainHandler),
                     (r"/live", LiveHandler),
                     (r"/data", DataHandler),
+                    (r"/ws", WsHandler),
                     ]
        
        
