@@ -21,7 +21,7 @@ class LiveModule(tornado.web.UIModule):
         n=Network()
         
         if n.isWAN(self.request.remote_ip):
-            namespace="smartdomus.redirectme.net:9090"
+            namespace="http://smartdomus.redirectme.net:9090"
         else:
             namespace="http://"+n.getPrivateIp()+":"+str(9090)
      
