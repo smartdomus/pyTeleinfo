@@ -12,5 +12,5 @@ $.getJSON(namespace+'/data', function(data) {
 
 });
 	
-setTimeout(requestPower,2000);
+setTimeout(requestPower,1000);
 }

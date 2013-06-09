@@ -48,10 +48,9 @@ class SerialConnector():
                         
                         self.nb=self.nb+1
                         
-                        if self.nb<2 :
+                        if self.nb<1 :
                             self.power = int(self.line.split(" ")[1])
-                            self.ser.close()
-                            break  
+                            print "papp found"
                         else:
                             self.nb=0
                             self.ser.close()

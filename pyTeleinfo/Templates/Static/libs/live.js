@@ -22,7 +22,7 @@ $(function () {
                               
                                 y = parseInt(power);//$('#pow').val());
                             series.addPoint([x, y], true, true);
-                        }, 2000);
+                        }, 1000);
                     }
                 }
             },
