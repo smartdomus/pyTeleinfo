@@ -11,36 +11,22 @@
 	</head>
 	<body>	
 
-<div id="house">
+<div id="multiview">
         <div>
-                <!-- Etage1 -->
-                <div id="contenu_etage1"><iframe src="{{namespace}}/live" width="100%" frameborder="0" height="800px"></iframe></div>
+            
+                <div id="view1"><iframe src="{{namespace}}/live" width="100%" frameborder="0" height="800px"></iframe></div>
         </div>
         <div>
                 <!-- Etage2 -->    
-                <div id="contenu_etage2"><iframe src="{{namespace}}/data" width="100%" frameborder="0" height="800px"></iframe></div>
+                <div id="view2"><iframe src="{{namespace}}/data" width="100%" frameborder="0" height="800px"></iframe></div>
         </div>
-        <div>
-                <!-- Etage3 -->
-                <div id="contenu_etage3"></div>
-        </div>  
-        <div>
-                <!-- Etage4 -->
-                <div id="contenu_etage4"></div>
-        </div>
-        <div>
-                <!-- Etage5 -->
-                <div id="contenu_etage5"></div>
-        </div>
+
 </div>
 
 
 <script type="text/javascript" src="/static/libs/ascensor.js"></script>
  <script type="text/javascript">
-	        //$('body').html('Hello World');
-	 //$('#contenu_etage1').html("http://127.0.0.1:9090/live");
-	 $('#house').ascensor();
-	 //$('#contenu_etage1').load("http://127.0.0.1:9090/live");
+	 $('#multiview').ascensor();
      </script>
 	</body>
 </html>
