@@ -104,14 +104,14 @@
 			            //newVal,
 			           // inc = Math.round(Math.random()*7000);
 			        
-			        newVal =  parseInt($('#pow').val());
+			        newVal = parseInt(power) //parseInt($('#pow').val());
 			       // if (newVal < 0 || newVal > 7000) {
 			         //   newVal = point.y - inc;
 			        //}
 			        
 			        point.update(newVal);
 			        
-			    }, 1000);
+			    }, 2000);
 			   
 			});
 		    

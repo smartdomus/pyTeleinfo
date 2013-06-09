@@ -18,9 +18,9 @@ class Network(object):
         ipB2=self.ipBeginning(self.getPrivateIp())
         
         if(ipB1==ipB2):
-            ret=True
-        else :
             ret=False
+        else :
+            ret=True
         return ret
         
     

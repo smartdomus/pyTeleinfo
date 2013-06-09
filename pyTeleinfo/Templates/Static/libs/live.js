@@ -19,9 +19,10 @@ $(function () {
                         var series = this.series[0];
                         setInterval(function() {
                             var x = (new Date()).getTime(), // current time
-                                y = parseInt($('#pow').val());
+                              
+                                y = parseInt(power);//$('#pow').val());
                             series.addPoint([x, y], true, true);
-                        }, 1000);
+                        }, 2000);
                     }
                 }
             },

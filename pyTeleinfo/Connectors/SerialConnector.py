@@ -3,6 +3,8 @@ Created on 2 juin 2013
 
 @author: Hoareau
 '''
+
+import random
 import serial
 
 
@@ -12,8 +14,9 @@ class SerialConnector():
     
     def __init__(self):
         
-        self.simu=False
+        #Variables initialization
         
+        self.simu=False
         self.power=0
         self.currentH=""
         self.hp=0
@@ -21,15 +24,17 @@ class SerialConnector():
         self.iinst=0
         self.nb=0
         
+        #Try a serial connection
         try:
             self.ser = serial.Serial('/dev/ttyUSB0', 1200, bytesize=7, stopbits=1, parity=serial.PARITY_EVEN, rtscts=1)
         except:
+            #If it fail we are in SimuMode
             self.simu = True;
-                #print 'error while opening serial communication'
                 
                 
                 
                 
+    # Retrieve all datas         
     def getDatas(self):
         
         if (self.simu==False):
@@ -63,16 +68,17 @@ class SerialConnector():
                         self.currentH = self.line.split(" ")[1]
 
     
+    #Return the power
     def getPower(self):
         if self.simu:
-            self.ret = 0
+            self.ret = random.randint(1,7000)
         else:
             self.ret= self.power
         return self.ret
         
 
-    
-    def getCurrentH(self):
+    #Return the current period
+    def getCurrentPeriod(self):
         
         if self.simu:
             self.ret = "-"
@@ -80,7 +86,7 @@ class SerialConnector():
             self.ret= self.currentH
         return self.ret
         
-        
+    #Return the HP index 
     def getHP(self):
         
         if self.simu:
@@ -89,7 +95,7 @@ class SerialConnector():
             self.ret= self.hp
         return self.ret
     
-        
+    #Return the HC index    
     def getHC(self):
         if self.simu:
             self.ret = 0
@@ -97,6 +103,7 @@ class SerialConnector():
             self.ret= self.hc
         return self.ret
     
+    #Return the Current I
     def getIinst(self):
         
         if self.simu:
