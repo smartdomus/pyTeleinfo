@@ -4,15 +4,19 @@ Created on 2 juin 2013
 @author: Hoareau
 '''
 
-from Handlers.DataHandler import DataHandler
-from Handlers.LiveHandler import LiveHandler
-from Handlers.MainHandler import MainHandler
-from Handlers.WsHandler import WsHandler
-from Modules.MenuModule import MenuModule
-from Modules.LiveModule import LiveModule
+from Connectors import DatabaseConnector
+from Handlers import MainHandler, DatasHandler, LiveHandler, WsHandler
+from Modules import LiveModule, MenuModule
+from Threads import LoggerThread
 import os
 import tornado.httpserver
 import tornado.ioloop
+
+
+
+
+
+
 
 
 
@@ -33,7 +37,7 @@ class Application(tornado.web.Application):
         handlers = [
                     (r"/", MainHandler),
                     (r"/live", LiveHandler),
-                    (r"/data", DataHandler),
+                    (r"/datas", DatasHandler),
                     (r"/ws", WsHandler),
                     ]
        
@@ -41,8 +45,12 @@ class Application(tornado.web.Application):
         tornado.web.Application.__init__(self,handlers,**settings)
 
 if __name__ == "__main__":
-    # db=DatabaseConnector()
-    # db.connect()
+    db=DatabaseConnector()
+    db.connect()
+    db.read('power')
+    db.close()
+    logger=LoggerThread()
+    logger.start()
     # serial=SerialConnector()
     # power=serial.getPower()
     # db.close()

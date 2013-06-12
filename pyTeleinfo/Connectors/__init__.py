@@ -1,2 +1,2 @@
-from DatabaseConnector import *
-from SerialConnector import *
+from Connectors.DatabaseConnector import DatabaseConnector
+from Connectors.SerialConnector import SerialConnector

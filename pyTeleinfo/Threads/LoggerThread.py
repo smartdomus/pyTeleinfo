@@ -1,22 +1,14 @@
-'''
-Created on 9 juin 2013
-
-@author: Hoareau
-'''
-
-
-from Connectors import SerialConnector
+from Connectors import SerialConnector, DatabaseConnector
 import Util
 import threading
 
 
-class SenderThread(threading.Thread):
+class LoggerThread(threading.Thread):
     
-    def __init__(self,wshandler):
+    def __init__(self):
         
         threading.Thread.__init__(self)
         self._stopevent = threading.Event()
-        self.wshandler=wshandler
       
         
     def run(self):
@@ -24,8 +16,11 @@ class SenderThread(threading.Thread):
         while not self._stopevent.isSet():
             self.ser=SerialConnector()
             self.ser.retrieve(Util.POWER_TAG)
-            self.wshandler.write_message(str(self.ser.get(Util.POWER_TAG)))
-            self._stopevent.wait(1.0)
+            db=DatabaseConnector()
+            db.connect()
+            db.insert('power',self.ser.get(Util.POWER_TAG) )
+            db.close()
+            self._stopevent.wait(2.0)
       
     def stop(self):
         

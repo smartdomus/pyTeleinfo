@@ -1,6 +1,24 @@
 @charset "utf-8";
 /* CSS Document */
 
+#gauge{
+		float:left;
+		width:49%;
+		border-radius: 10px;
+		box-shadow: 1px 1px 12px #555;
+}
+#live{
+		border-radius: 10px;
+		box-shadow: 1px 1px 12px #555;
+}
+	
+		
+#gauge2{
+		float:right;
+		width:49%;
+		border-radius: 10px;
+		box-shadow: 1px 1px 12px #555;
+		}
 
 .horizontal-nav {
     background: #efefef;
@@ -9,7 +27,7 @@
 }
 .horizontal-nav ul {
     background: #128F9A;
-    float: left;
+    float:inherit;
     text-align: center;
     border-radius: 6px;
     border: 1px solid #0e7079;

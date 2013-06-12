@@ -3,8 +3,9 @@ Created on 9 juin 2013
 
 @author: Hoareau
 '''
+from Threads import SenderThread
 from tornado.websocket import WebSocketHandler
-from Threads.SenderThread import SenderThread
+
 
 
 
@@ -19,5 +20,4 @@ class WsHandler(WebSocketHandler):
 
     def on_close(self):
         self.sender.stop()
-        self.isopen=False
         print 'connection closed'

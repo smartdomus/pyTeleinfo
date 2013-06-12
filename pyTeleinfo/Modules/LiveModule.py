@@ -4,7 +4,8 @@ Created on 9 juin 2013
 @author: Hoareau
 '''
 from Connectors import SerialConnector
-from Util.Network import Network
+from Util import Network
+import Util
 import tornado.web
 
 class LiveModule(tornado.web.UIModule):
@@ -18,7 +19,7 @@ class LiveModule(tornado.web.UIModule):
     def embedded_javascript(self):
         
         self.ser=SerialConnector()
-        self.ser.retrievePower()
+        self.ser.retrieve(Util.POWER_TAG)
         
         n=Network()
         
@@ -27,4 +28,4 @@ class LiveModule(tornado.web.UIModule):
         else:
             namespace=n.getPrivateIp()+":"+str(9090)
     
-        return "power="+str(self.ser.getPower())+";var namespace=\""+namespace+"\";"
+        return "power="+str(self.ser.get(Util.POWER_TAG))+";var namespace=\""+namespace+"\";"

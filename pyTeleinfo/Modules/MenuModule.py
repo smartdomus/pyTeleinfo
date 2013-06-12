@@ -7,9 +7,7 @@ import tornado
 
 class MenuModule(tornado.web.UIModule):
     
-    def javascript_files(self):
-        return "/static/libs/jquery.horizontalNav.js"
-    
+
     
     def render(self):
         return """<nav class=\"horizontal-nav full-width\">
@@ -22,7 +20,11 @@ class MenuModule(tornado.web.UIModule):
       <li><a href=\"#\">Contact</a></li>
    </ul>
 </nav>
-"""
+"""    
+
+    def javascript_files(self):
+        return "/static/libs/jquery.horizontalNav.js"
+    
     
     def embedded_javascript(self):
         return "$(document).ready(function() {$(\'.full-width\').horizontalNav({});});"

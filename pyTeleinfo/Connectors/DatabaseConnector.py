@@ -20,5 +20,12 @@ class DatabaseConnector():
         self.cursor.execute("INSERT INTO "+ where + " VALUES ('"+str(datetime.datetime.now())+"',"+str(value)+")")
         self.conn.commit()
         
+    def read(self,where):
+        self.cursor=self.conn.cursor()
+        self.cursor.execute("SELECT * FROM "+where)
+        self.rows = self.cursor.fetchall()
+        for row in self.rows:
+            print row
+        
     def close(self):
         self.conn.close()
