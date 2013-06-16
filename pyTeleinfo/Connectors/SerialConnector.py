@@ -32,10 +32,12 @@ class SerialConnector():
         if (self.simu==False):
             while True:
                 self.line = self.ser.readline().decode('utf-8')
+              
                 if self.line:  # If it isn't a blank line
-                    
+                    print self.line
                     if tag in self.line:
-                        self.value = int(self.line.split(" ")[1])
+                        self.value = self.line.split(" ")[1]
+                        print self.value
                         self.ser.close()
                         self.datas[tag]=self.value
                         break        
@@ -85,5 +87,6 @@ class SerialConnector():
             self.ret = random.randint(1,7000)
         else:
             self.ret= self.datas[tag]
+        print "serial data ="+str(self.ret)
         return self.ret
 
