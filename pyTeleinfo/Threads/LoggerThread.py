@@ -18,7 +18,7 @@ class LoggerThread(threading.Thread):
             self.ser.retrieve(Util.POWER_TAG)
             db=DatabaseConnector()
             db.connect()
-            db.insert('power',self.ser.get(Util.POWER_TAG) )
+            db.update('actual_power',self.ser.get(Util.POWER_TAG) )
             db.close()
             self._stopevent.wait(2.0)
       

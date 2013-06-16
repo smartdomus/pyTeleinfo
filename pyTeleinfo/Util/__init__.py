@@ -1,6 +1,7 @@
-from Network import *
+from Util.Network import Network
 POWER_TAG='PAPP'
 HC_TAG='HCHC'
 HP_TAG='HCHP'
 CURRENTH_TAG='OPTARIF'
 IINST_TAG='IINST'
+MY_IP=''

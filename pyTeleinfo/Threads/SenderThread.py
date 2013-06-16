@@ -5,7 +5,7 @@ Created on 9 juin 2013
 '''
 
 
-from Connectors import SerialConnector
+from Connectors import SerialConnector, DatabaseConnector
 import Util
 import threading
 
@@ -22,9 +22,15 @@ class SenderThread(threading.Thread):
     def run(self):
         
         while not self._stopevent.isSet():
-            self.ser=SerialConnector()
-            self.ser.retrieve(Util.POWER_TAG)
-            self.wshandler.write_message(str(self.ser.get(Util.POWER_TAG)))
+            # self.ser=SerialConnector()
+            #self.ser.retrieve(Util.POWER_TAG)
+            self.db=DatabaseConnector()
+            self.db.connect()
+          
+            power=self.db.get_last('power', 'value')
+            #self.wshandler.write_message(str(self.ser.get(Util.POWER_TAG)))
+            self.wshandler.write_message(str(power))
+            self.db.close()                            
             self._stopevent.wait(1.0)
       
     def stop(self):

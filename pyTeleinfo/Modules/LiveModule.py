@@ -20,12 +20,12 @@ class LiveModule(tornado.web.UIModule):
         
         self.ser=SerialConnector()
         self.ser.retrieve(Util.POWER_TAG)
+       
         
         n=Network()
         
         if n.isWAN(self.request.remote_ip):
             namespace="smartdomus.redirectme.net:9090"
         else:
-            namespace=n.getPrivateIp()+":"+str(9090)
-    
+            namespace=Util.MY_IP+":"+str(9090)
         return "power="+str(self.ser.get(Util.POWER_TAG))+";var namespace=\""+namespace+"\";"

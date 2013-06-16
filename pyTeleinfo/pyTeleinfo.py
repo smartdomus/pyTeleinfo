@@ -4,13 +4,16 @@ Created on 2 juin 2013
 @author: Hoareau
 '''
 
-from Connectors import DatabaseConnector
+
 from Handlers import MainHandler, DatasHandler, LiveHandler, WsHandler
 from Modules import LiveModule, MenuModule
 from Threads import LoggerThread
+from Util.Network import Network
 import os
 import tornado.httpserver
 import tornado.ioloop
+
+
 
 
 
@@ -45,10 +48,7 @@ class Application(tornado.web.Application):
         tornado.web.Application.__init__(self,handlers,**settings)
 
 if __name__ == "__main__":
-    db=DatabaseConnector()
-    db.connect()
-    db.read('power')
-    db.close()
+    
     logger=LoggerThread()
     logger.start()
     # serial=SerialConnector()
@@ -56,8 +56,9 @@ if __name__ == "__main__":
     # db.close()
     # db.insert('power',power)
     app=Application()
+
     http_server = tornado.httpserver.HTTPServer(app)
-    http_server.listen(app.port,'0.0.0.0')
+    http_server.listen(app.port,Network.getPrivateIp())
 
    
     # periodic.start()
