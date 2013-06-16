@@ -20,7 +20,7 @@ class LoggerThread(threading.Thread):
             self.db.connect()
             self.db.update('actual_power',self.ser.get(Util.POWER_TAG) )
             self.db.close()
-            self._stopevent.wait(3.0)
+            self._stopevent.wait(1.0)
       
     def stop(self):
         
