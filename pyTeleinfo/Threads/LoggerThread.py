@@ -9,6 +9,7 @@ class LoggerThread(threading.Thread):
         
         threading.Thread.__init__(self)
         self._stopevent = threading.Event()
+        self.db=DatabaseConnector()
       
         
     def run(self):
@@ -16,11 +17,10 @@ class LoggerThread(threading.Thread):
         while not self._stopevent.isSet():
             self.ser=SerialConnector()
             self.ser.retrieve(Util.POWER_TAG)
-            db=DatabaseConnector()
-            db.connect()
-            db.update('actual_power',self.ser.get(Util.POWER_TAG) )
-            db.close()
-            self._stopevent.wait(1.0)
+            self.db.connect()
+            self.db.update('actual_power',self.ser.get(Util.POWER_TAG) )
+            self.db.close()
+            self._stopevent.wait(3.0)
       
     def stop(self):
         
