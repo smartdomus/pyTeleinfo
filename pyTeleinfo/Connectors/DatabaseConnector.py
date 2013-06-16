@@ -40,9 +40,8 @@ class DatabaseConnector():
         self.cursor.execute("SELECT power FROM actual_power WHERE id='1'")
         #self.cursor.execute("SELECT LAST(value) FROM power ")
         #self.cursor.lastrowid
-        print 'getlast'
         self.ret=self.cursor.fetchone()[0]
-        #self.conn.commit()
+        self.conn.commit()
         return  self.ret  
         
     def close(self):
