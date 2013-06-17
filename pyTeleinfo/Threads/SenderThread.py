@@ -17,21 +17,19 @@ class SenderThread(threading.Thread):
         threading.Thread.__init__(self)
         self._stopevent = threading.Event()
         self.wshandler=wshandler
+        self.db=DatabaseConnector()
       
         
     def run(self):
         
         while not self._stopevent.isSet():
-            # self.ser=SerialConnector()
-            #self.ser.retrieve(Util.POWER_TAG)
-            self.db=DatabaseConnector()
+           
             self.db.connect()
           
             power=self.db.get_last('power', 'value')
-            #self.wshandler.write_message(str(self.ser.get(Util.POWER_TAG)))
             self.wshandler.write_message(str(power))
             self.db.close()                            
-            self._stopevent.wait(1.0)
+            self._stopevent.wait(1.5)
       
     def stop(self):
         

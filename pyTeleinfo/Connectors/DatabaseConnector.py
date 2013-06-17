@@ -9,9 +9,11 @@ import sqlite3
 class DatabaseConnector():
     
     def __init__(self):
+        print "DatabaseConnector instance was create"
         self.id=0
         
     def connect(self):
+        print "database connection"
         self.conn = sqlite3.connect('pyTeleinfo.db')
         
         
@@ -45,4 +47,5 @@ class DatabaseConnector():
         return  self.ret  
         
     def close(self):
+        print "database close"
         self.conn.close()

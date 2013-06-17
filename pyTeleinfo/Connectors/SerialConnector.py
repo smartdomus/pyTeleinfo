@@ -29,6 +29,7 @@ class SerialConnector():
                 
                 
     def retrieve(self,tag):
+        print "serial retrieve :"+tag
         if (self.simu==False):
             while True:
                 self.line = self.ser.readline().decode('utf-8')
@@ -45,7 +46,7 @@ class SerialConnector():
                 
     # Retrieve all datas         
     def retrieveAllDatas(self):
-        
+        print "serial retrieve alldatas:"
         if (self.simu==False):
 
 
@@ -82,6 +83,7 @@ class SerialConnector():
 
 
     def get(self,tag):
+        print"serial get :"+tag
         
         if self.simu:
             self.ret = random.randint(1,7000)
